@@ -11,7 +11,7 @@ import Error from './components/Error';
 import getNetwork from '../../scripts/network';
 import executeDeposit from '../../scripts/contract';
 import provider from '../../scripts/provider';
-import instantiateGoerliContract from '../../scripts/goerliContract'; 
+import instantiateGoerliContract from '../../scripts/goerliContract';
 
 const { Content } = Layout;
 const Step = Steps.Step;
@@ -47,7 +47,6 @@ class BridgePage extends Component {
 
   processRequest = async ({amount}) => {
     const { provider, pubKey, network } = this.state;
-
     if (network !== 'main') {
       this.setState({ amount, dataProcessed: true }, () => {});
       const { tx, contract } = await executeDeposit(provider, amount, network, pubKey);
@@ -55,12 +54,12 @@ class BridgePage extends Component {
       
       this.setState({despoitTx: tx});
       const goerliContract = await instantiateGoerliContract();
-      
+
       contract.on("Deposit", (_recipient, _value, _toChain, event) => {
         const eAddress = _recipient.toLowerCase();
-        const cAddress = pubKey[0].toLowerCase();      
+        const cAddress = pubKey.toLowerCase();
         if (eAddress === cAddress) {
-          this.setState({ 
+          this.setState({
             eventRecipient: _recipient,
             eventValue: _value,
             eventToChain: _toChain,
@@ -68,14 +67,19 @@ class BridgePage extends Component {
           });
         }
       });
-  
-      goerliContract.on("Withdraw", (_recipient, _value, _fromChain) => {
+
+	    goerliContract.on("Withdraw", (_recipient, _value, _fromChain) => {
         const gAddress = _recipient.toLowerCase();
-        const cAddress = pubKey[0].toLowerCase();
+        const cAddress = pubKey.toLowerCase();
         if (gAddress === cAddress) {
+<<<<<<< HEAD
           console.log({_recipient, _value, _fromChain});
           this.setState({ 
             goerliRecipient: _recipient, 
+=======
+          this.setState({
+            goerliRecipient: _recipient,
+>>>>>>> 76568b4910ad85c43cccf64d4f12edabadbada73
             goerliValue: _value,
             goerliFromChain: _fromChain,
           });
@@ -92,11 +96,11 @@ class BridgePage extends Component {
   };
 
   resetData = () => {
-    this.setState({ 
+    this.setState({
       dataProcessed: false,
-      eventRecipient: null, 
-      eventValue: null, 
-      eventToChain: null, 
+      eventRecipient: null,
+      eventValue: null,
+      eventToChain: null,
       eventEvent: null,
       goerliRecipient: null,
       goerliValue: null,
@@ -108,9 +112,8 @@ class BridgePage extends Component {
   render() {
     const { dataProcessed, error, network } = this.state;
     const depositEventTriggered = this.state.eventRecipient !== null;
-    const withdrawEventTriggered = this.state.goerliRecipient !== null;    
+    const withdrawEventTriggered = this.state.goerliRecipient !== null;
     const eventsDisplayed = depositEventTriggered && withdrawEventTriggered;
-    
     return (
       <Layout style={layoutStyle}>
       <NavigationHeader />
@@ -124,18 +127,18 @@ class BridgePage extends Component {
           <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: '100%' }}>
             {
               dataProcessed
-              ? null 
+              ? null
               : <Steps direction="vertical" size="small" current={1} style={{padding: '5%'}}>
                   <Step title="Step 1" description="Select MetaMask Test Network you wish to exchange." />
                   <Step title="Step 2" description="Enter ether amount." />
                   <Step title="Step 3" description="Click send to bridge and wait for events to display to verify." />
-                </Steps> 
+                </Steps>
             }
             {
-              error !== null 
-              ? <div className="errorContainer"> 
-                  <Error errorMessage={error} /> 
-                </div> 
+              error !== null
+              ? <div className="errorContainer">
+                  <Error errorMessage={error} />
+                </div>
               : null
             }
           
@@ -161,7 +164,7 @@ class BridgePage extends Component {
 }
 
 const layoutStyle = {
-  flex: 1, 
+  flex: 1,
   height: '100vh'
 };
 
