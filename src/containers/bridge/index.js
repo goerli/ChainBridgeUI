@@ -32,6 +32,7 @@ class BridgePage extends Component {
     goerliRecipient: null,
     goerliValue: null,
     goerliFromChain: null,
+    despoitTx: null,
   };
 
   async componentDidMount() {
@@ -49,7 +50,10 @@ class BridgePage extends Component {
 
     if (network !== 'main') {
       this.setState({ amount, dataProcessed: true }, () => {});
-      const contract = await executeDeposit(provider, amount, network, pubKey);
+      const { tx, contract } = await executeDeposit(provider, amount, network, pubKey);
+      console.log({tx}, 'tx');
+      
+      this.setState({despoitTx: tx});
       const goerliContract = await instantiateGoerliContract();
       
       contract.on("Deposit", (_recipient, _value, _toChain, event) => {
@@ -69,6 +73,7 @@ class BridgePage extends Component {
         const gAddress = _recipient.toLowerCase();
         const cAddress = pubKey[0].toLowerCase();
         if (gAddress === cAddress) {
+          console.log({_recipient, _value, _fromChain});
           this.setState({ 
             goerliRecipient: _recipient, 
             goerliValue: _value,
@@ -133,11 +138,14 @@ class BridgePage extends Component {
                 </div> 
               : null
             }
+          
             <div className="formDivContainer">
               <ContractForm activeNetwork={network} reset={this.resetData} extractData={this.processRequest} eventsComplete={eventsDisplayed}/>
             </div>
-            <div style={{margin: '0 auto' }}>
-              <ProgressElement activated={dataProcessed} depositRecieved={depositEventTriggered} withdrawRecieved={withdrawEventTriggered} />           
+            <div style={{margin: '0 auto', width: '90%', paddingTop: '5%' }}>
+              <p style={{margin: '0 auto' }}>Deposit TX Hash: {this.state.despoitTx === null ? "not recieved" : this.state.despoitTx.hash} </p>
+              <p style={{margin: '0 auto' }}>Withdraw TX Hash: {this.state.goerliRecipient === null ? "waiting for event" : this.state.goerliRecipient} </p>
+              {/* <ProgressElement activated={dataProcessed} depositRecieved={depositEventTriggered} withdrawRecieved={withdrawEventTriggered} />            */}
             </div>
             <div>
               {
