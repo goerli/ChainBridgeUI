@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import './ContractForm.css';
-import { Button, Row, Col, Card } from 'antd';
+import { Button, Row, Col, Card, Input } from 'antd';
 import FormInputText from './FormInputText';
 
 class ContractForm extends Component {
@@ -24,11 +24,6 @@ class ContractForm extends Component {
     this.props.extractData({amount});
   };
 
-  reset = async () => {
-    await this.setState({activated: false });
-    this.props.reset();
-  }
-
   render() {
     const { errorMessage, amount, activated, resetData } = this.state;
     const hasError = errorMessage !== null;
@@ -44,19 +39,20 @@ class ContractForm extends Component {
                   hasError ? <p className="errorTxt">Error: {errorMessage} </p> : null
                 }
               </div>
+              <p> Add Ether Value </p>
               <Row type="flex" justify="space-around" gutter={16} className="formContainer">
                 <Col xs={24} sm={12} md={8} lg={8} span={4}>
                   <FormInputText resetField={resetData} isDisabled={false} type="amount" placeholderText="Ether Amount" returnValue={this.processInputs} />
                 </Col>           
                 <Col xs={24} sm={12} md={8} span={4}>
-                  <FormInputText isDisabled={true} placeholderText={this.props.activeNetwork} />
+                  <Input disabled={true} value={this.props.activeNetwork} placeholder={this.props.activeNetwork} />       
                 </Col>
                 <Col xs={24} sm={12} md={8} span={4}>
                 {
                   activated 
                   ?  <Button
                         disabled={!this.props.eventsComplete} 
-                        onClick={() => this.reset()} 
+                        onClick={() => window.location.reload()} 
                         type="danger">Clear Data
                       </Button> 
                   :  <Button 

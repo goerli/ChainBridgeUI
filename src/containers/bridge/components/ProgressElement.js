@@ -49,6 +49,7 @@ const stepContainer = {
   paddingTop: '5%', 
   paddingBottom: '5%',
   margin: '0 auto', 
+  overflow: 'hidden',
 };
 
 const text = {

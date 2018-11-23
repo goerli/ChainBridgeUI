@@ -46,12 +46,11 @@ class BridgePage extends Component {
 
   processRequest = async ({amount}) => {
     const { provider, pubKey, network } = this.state;
-
     if (network !== 'main') {
       this.setState({ amount, dataProcessed: true }, () => {});
       const contract = await executeDeposit(provider, amount, network, pubKey);
       const goerliContract = await instantiateGoerliContract();
-      
+
       contract.on("Deposit", (_recipient, _value, _toChain, event) => {
         const eAddress = _recipient.toLowerCase();
         const cAddress = pubKey[0].toLowerCase();      
@@ -104,8 +103,7 @@ class BridgePage extends Component {
     const { dataProcessed, error, network } = this.state;
     const depositEventTriggered = this.state.eventRecipient !== null;
     const withdrawEventTriggered = this.state.goerliRecipient !== null;    
-    const eventsDisplayed = depositEventTriggered && withdrawEventTriggered;
-    
+    const eventsDisplayed = depositEventTriggered && withdrawEventTriggered;    
     return (
       <Layout style={layoutStyle}>
       <NavigationHeader />
