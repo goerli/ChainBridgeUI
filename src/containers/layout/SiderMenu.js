@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css'
 import { Link } from "react-router-dom";
 import { Layout, Menu, Icon } from 'antd';
+
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
@@ -16,11 +17,11 @@ class SiderMenu extends Component {
 
   render() {
     return (
-       <Sider width={200} style={{ background: '#fff' }}>
+       <Sider width={200} style={siderContainerStyle}>
         <Menu
             mode="inline"
             defaultOpenKeys={['sub1', 'sub2']}
-            style={{ height: '100%', borderRight: 0 }}
+            style={siderStyle}
         >
         <SubMenu key="sub1" title={<span><Icon type="laptop" />Network</span>}>
             <Menu.Item key="1">
@@ -43,5 +44,14 @@ class SiderMenu extends Component {
     );
   }
 }
+
+const siderContainerStyle = {
+  background: '#fff',
+};
+
+const siderStyle = {
+  height: '100%',
+  borderRight: 0, 
+};
 
 export default SiderMenu;

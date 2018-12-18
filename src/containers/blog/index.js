@@ -3,6 +3,7 @@ import 'antd/dist/antd.css'
 import NavigationHeader from '../layout/Header';
 import SiderMenu from '../layout/SiderMenu';
 import { Layout, Breadcrumb, List, Avatar } from 'antd';
+import articles from './assets/articles';
 
 const { Content } = Layout;
 
@@ -13,7 +14,10 @@ for (let i = 0; i < 10; i++) {
     title: `Example Blog Post ${i}`,
     avatar: require('../../assets/images/goerli.png'),
     description: 'Awesome content coming....',
-    content: ' Read more on the motivation in the [Görli Testnet Proposal]  Read more on the motivation in the  Read more on the motivation in the [Görli Testnet Proposal] [Görli Testnet Proposal]  Read more on the motivation in the [Görli Testnet Proposal]  Read more on the motivation in the [Görli Testnet Proposal]Read more on the motivation in the [Görli Testnet Proposal](https://dev.to/5chdn/the-grli-testnet-proposal---a-call-for-participation-58pf)',
+    content:`There are many Ethereum testnets available for experimenting with smart contracts and deploying
+    decentralised applications before going live on the main Ethereum network. However, there is no testnet 
+    available that is both widely usable across all client implementations, and robust enough to guarantee 
+    consistent availability and high reliability.\n`,
   });
 }
 
@@ -38,17 +42,18 @@ const BlogPage = () => (
             },
             pageSize: 10,
           }}
-          dataSource={listData}
+          dataSource={articles}
           renderItem={item => (
             <List.Item
               key={item.title}           
             >
               <List.Item.Meta
                 avatar={<Avatar src={item.avatar} />}
-                title={<a href={item.href}>{item.title}</a>}
-                description={item.description}
+                title={<a href={item.href} target="_blank" rel="noopener noreferrer">{item.title}</a>}
+                description={item.meta}
               />
               {item.content}
+              <p style={{paddingTop: '2.5%'}}> <a href={item.href} target="_blank" rel="noopener noreferrer">Read Article </a> </p>
             </List.Item>
           )}
         />
