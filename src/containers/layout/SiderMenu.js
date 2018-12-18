@@ -25,21 +25,18 @@ class SiderMenu extends Component {
         >
         <SubMenu key="sub1" title={<span><Icon type="laptop" />Network</span>}>
             <Menu.Item key="1">
-                <Link to="/stats" onClick={() => this.handleClick(1)}>Network Stats</Link> 
-            </Menu.Item>
-            <Menu.Item key="2">
-                <Link to="/bridge" onClick={() =>this.handleClick(2)}>Bridge</Link> 
+                <Link to="/bridge" onClick={() =>this.handleClick(1)}>Bridge</Link> 
              </Menu.Item>
         </SubMenu>
         <SubMenu key="sub2" title={<span><Icon type="user" />Information</span>}>
-            <Menu.Item key="5">
-                <Link to="/about" onClick={() => this.handleClick(4)}>About</Link> 
+            <Menu.Item key="2">
+                <Link to="/about" onClick={() => this.handleClick(2)}>About</Link> 
             </Menu.Item>
-            <Menu.Item key="6">
-                <Link to="/blog" onClick={() =>this.handleClick(6)}> Blog </Link> 
+            <Menu.Item key="3">
+                <Link to="/blog" onClick={() =>this.handleClick(3)}> Blog </Link> 
             </Menu.Item>     
-            <Menu.Item key="7">
-                <Link to="/roadmap" onClick={() =>this.handleClick(7)}>Roadmap </Link> 
+            <Menu.Item key="4">
+                <Link to="/roadmap" onClick={() =>this.handleClick(4)}>Roadmap </Link> 
             </Menu.Item>              
         </SubMenu>
         </Menu>

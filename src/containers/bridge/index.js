@@ -134,13 +134,8 @@ class BridgePage extends Component {
             <div className="formDivContainer">
               <ContractForm activeNetwork={network} reset={this.resetData} extractData={this.processRequest} eventsComplete={eventsDisplayed}/>
             </div>
-<<<<<<< HEAD
             <div style={{margin:'0 auto', paddingTop: '2.5%' }}>
               <ProgressElement activated={dataProcessed} depositRecieved={depositEventTriggered} withdrawRecieved={withdrawEventTriggered} />           
-=======
-            <div style={{margin: '0 auto' }}>
-              <ProgressElement activated={dataProcessed} depositRecieved={depositEventTriggered} withdrawRecieved={withdrawEventTriggered} />
->>>>>>> 20238691af4a9b92460af39fe464869cd6e2320b
             </div>
             <div>
               {
