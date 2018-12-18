@@ -95,12 +95,6 @@ const cardContainer = {
   margin: '0 auto',
 };
 
-const titleStyles = {
-  fontSize: '1.1em',
-  fontWeight: '500',
-  color: '#AFA392',
-};
-
 const headerStyles = {
   fontSize: '1.3em',
   fontWeight: '500',

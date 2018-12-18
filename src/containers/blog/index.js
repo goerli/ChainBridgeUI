@@ -1,15 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css'
 import NavigationHeader from '../layout/Header';
 import SiderMenu from '../layout/SiderMenu';
-import { Layout, Menu, Breadcrumb, List, Icon, Avatar } from 'antd';
+import { Layout, Breadcrumb, List, Avatar } from 'antd';
 
 const { Content } = Layout;
 
-/**
- * TODO: container doesnt fit all text
- */
 const listData = [];
 for (let i = 0; i < 10; i++) {
   listData.push({
@@ -20,13 +16,6 @@ for (let i = 0; i < 10; i++) {
     content: ' Read more on the motivation in the [Görli Testnet Proposal]  Read more on the motivation in the  Read more on the motivation in the [Görli Testnet Proposal] [Görli Testnet Proposal]  Read more on the motivation in the [Görli Testnet Proposal]  Read more on the motivation in the [Görli Testnet Proposal]Read more on the motivation in the [Görli Testnet Proposal](https://dev.to/5chdn/the-grli-testnet-proposal---a-call-for-participation-58pf)',
   });
 }
-
-const IconText = ({ type, text }) => (
-  <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-);
 
 const BlogPage = () => (
   <Layout style={layoutStyle}>

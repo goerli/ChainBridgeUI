@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css'
 import NavigationHeader from '../layout/Header';
 import SiderMenu from '../layout/SiderMenu';
-import { Layout, Menu, Breadcrumb, Icon, Timeline } from 'antd';
+import { Layout, Breadcrumb, Timeline } from 'antd';
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider, Footer } = Layout;
+const { Content } = Layout;
 
 const RoadmapPage = () => (
   <Layout style={layoutContainerStyle}>
@@ -19,8 +17,6 @@ const RoadmapPage = () => (
           <Breadcrumb.Item>Roadmap</Breadcrumb.Item>
       </Breadcrumb>
       <Content style={contentStyle}>
-        <h2 style={headerStyle}> Goerli Testnet Roadmap </h2>
-        <br />
         <Timeline>
           <div style={roadmapHeaderStyle}>
             <h4>Complete </h4>
@@ -70,10 +66,6 @@ const layoutStyle = {
 
 const breadcrumbStyle = {
   margin: '16px 0',
-};
-
-const headerStyle = {
-  marginTop: '2.5%',
 };
 
 const contentStyle = {

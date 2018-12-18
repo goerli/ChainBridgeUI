@@ -31,7 +31,7 @@ const executeTransaction = async (contract, amount, txCount, pubKey, provider, n
     nonce: txCount,
     value: wei,
   };
-  let tx = await contract.functions.deposit(pubKey, 6284, overrideOptions);
+  await contract.functions.deposit(pubKey, 6284, overrideOptions);
 };
 
 export default executeDeposit;

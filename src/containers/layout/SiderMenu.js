@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css'
 import { Link } from "react-router-dom";
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import NavigationHeader from './Header';
+import { Layout, Menu, Icon } from 'antd';
 const { SubMenu } = Menu;
-const { Header, Content, Sider, Footer } = Layout;
+const { Sider } = Layout;
 
 class SiderMenu extends Component {
   state= {
@@ -30,14 +29,14 @@ class SiderMenu extends Component {
         </SubMenu>
         <SubMenu key="sub2" title={<span><Icon type="user" />Information</span>}>
             <Menu.Item key="2">
-                <Link to="/about" onClick={() => this.handleClick(2)}>About</Link> 
-            </Menu.Item>
+                <Link to="/roadmap" onClick={() =>this.handleClick(2)}>Roadmap </Link> 
+            </Menu.Item>  
             <Menu.Item key="3">
                 <Link to="/blog" onClick={() =>this.handleClick(3)}> Blog </Link> 
             </Menu.Item>     
             <Menu.Item key="4">
-                <Link to="/roadmap" onClick={() =>this.handleClick(4)}>Roadmap </Link> 
-            </Menu.Item>              
+                <Link to="/about" onClick={() => this.handleClick(4)}>About</Link> 
+            </Menu.Item>            
         </SubMenu>
         </Menu>
     </Sider>

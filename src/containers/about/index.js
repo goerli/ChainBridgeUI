@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css'
 import NavigationHeader from '../layout/Header';
 import SiderMenu from '../layout/SiderMenu';
-import { Layout, Menu, Breadcrumb, Collapse } from 'antd';
+import { Layout, Breadcrumb, Collapse } from 'antd';
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider, Footer } = Layout;
+const { Content } = Layout;
 const Panel = Collapse.Panel;
 
 const data = [

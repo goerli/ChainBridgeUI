@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import About from '../about';
 import Blog from '../blog';
-import Wiki from '../wiki';
 import Bridge from '../bridge';
 import RoadMap from '../roadmap';
 
