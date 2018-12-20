@@ -23,7 +23,7 @@ class SiderMenu extends Component {
             defaultOpenKeys={['sub1', 'sub2']}
             style={siderStyle}
         >
-        <SubMenu key="sub2" title={<span><Icon type="user" />Information</span>}>
+        <SubMenu key="sub1" title={<span><Icon type="user" />Information</span>}>
             <Menu.Item key="2">
                 <Link to="/roadmap" onClick={() =>this.handleClick(2)}>Roadmap </Link> 
             </Menu.Item>  
@@ -32,6 +32,11 @@ class SiderMenu extends Component {
             </Menu.Item>     
             <Menu.Item key="4">
                 <Link to="/about" onClick={() => this.handleClick(4)}>About</Link> 
+            </Menu.Item>            
+        </SubMenu>
+        <SubMenu key="sub2" title={<span><Icon type="user" />Information</span>}>
+            <Menu.Item key="2">
+                <Link to="/bridge" onClick={() =>this.handleClick(5)}>Bridge </Link> 
             </Menu.Item>            
         </SubMenu>
         </Menu>
