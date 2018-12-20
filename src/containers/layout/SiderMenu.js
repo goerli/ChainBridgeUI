@@ -35,7 +35,7 @@ class SiderMenu extends Component {
             </Menu.Item>            
         </SubMenu>
         <SubMenu key="sub2" title={<span><Icon type="user" />Information</span>}>
-            <Menu.Item key="2">
+            <Menu.Item key="5">
                 <Link to="/bridge" onClick={() =>this.handleClick(5)}>Bridge </Link> 
             </Menu.Item>            
         </SubMenu>
