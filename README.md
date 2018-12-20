@@ -2,7 +2,7 @@
 
 ## Göeth Website
 
-Görli's Website is the web platform dedicated to the Görli's testnet. Contains relevant information, roadmap & development progress, media content, and holds the current Görli Bridge UI that allows you to exchange your testnet Ether for our Göeth. 
+Web platform dedicated to the Görli's testnet. Contains relevant project information, context, and supplemental links, roadmap & development progress, media content & articles, and preliminary Göeth Bridge UI facilitating testnet Ether to Göeth exchanges.
 
 ## Setup
 
