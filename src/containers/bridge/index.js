@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css'
 import NavigationHeader from '../layout/Header';
 import SiderMenu from '../layout/SiderMenu';
-import { Layout, Menu, Breadcrumb, Icon, Steps, Button } from 'antd';
+import { Layout, Breadcrumb, Steps, Button} from 'antd';
 import ContractForm from './components/ContractForm';
 import TxSummary from './components/TxSummary';
 import ProgressElement from './components/ProgressElement';

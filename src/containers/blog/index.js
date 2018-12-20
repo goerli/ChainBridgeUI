@@ -1,74 +1,81 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css'
 import NavigationHeader from '../layout/Header';
 import SiderMenu from '../layout/SiderMenu';
-import { Layout, Menu, Breadcrumb, List, Icon, Avatar } from 'antd';
+import { Layout, Breadcrumb, List, Avatar } from 'antd';
+import articles from './assets/articles';
 
 const { Content } = Layout;
 
-const listData = [];
-for (let i = 0; i < 23; i++) {
-  listData.push({
-    href: 'https://github.com/goerli/testnet/edit/master/README.md',
-    title: `Example Blog Post ${i}`,
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    description: 'Awesome content coming....',
-    content: ' Read more on the motivation in the [Görli Testnet Proposal](https://dev.to/5chdn/the-grli-testnet-proposal---a-call-for-participation-58pf)',
-  });
-}
-
-const IconText = ({ type, text }) => (
-  <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-);
-
 const BlogPage = () => (
-  <Layout style={layoutStyle}>
-  <NavigationHeader />
-  <Layout>
-    <SiderMenu />
-    <Layout style={{ padding: '0 24px 24px' }}>
-      <Breadcrumb style={{ margin: '16px 0' }}>
+  <Layout style={layoutContainerStyle}>
+    <NavigationHeader />
+    <Layout>
+      <SiderMenu />
+      <Layout style={layoutStyle}>
+        <Breadcrumb style={breadcrumbStyle}>
           <Breadcrumb.Item>Network</Breadcrumb.Item>
           <Breadcrumb.Item>Blog</Breadcrumb.Item>
-      </Breadcrumb>
-      <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-        <h3 style={{ margin: '16px 0' }}>Goerli Blog WIP</h3>
-        <List
-          itemLayout="vertical"
-          size="large"
-          pagination={{
-            onChange: (page) => {
-              console.log(page);
-            },
-            pageSize: 3,
-          }}
-          dataSource={listData}
-          renderItem={item => (
-            <List.Item
-              key={item.title}           
-            >
-              <List.Item.Meta
-                avatar={<Avatar src={item.avatar} />}
-                title={<a href={item.href}>{item.title}</a>}
-                description={item.description}
-              />
-              {item.content}
-            </List.Item>
-          )}
-        />
-      </Content>
+        </Breadcrumb>
+        <Content style={contentStyle}>
+          <h3 style={headerStyle}>Goerli Articles</h3>
+          <List
+            itemLayout="vertical"
+            size="large"
+            pagination={{
+              onChange: (page) => {
+                console.log(page);
+              },
+              pageSize: 10,
+            }}
+            dataSource={articles}
+            renderItem={item => (
+              <List.Item
+                key={item.title}           
+              >
+                <List.Item.Meta
+                  avatar={<Avatar src={item.avatar} />}
+                  title={<a href={item.href} target="_blank" rel="noopener noreferrer">{item.title}</a>}
+                  description={item.meta}
+                />
+                {item.content}
+                <p style={linkStyle}> <a href={item.href} target="_blank" rel="noopener noreferrer">Read Article </a> </p>
+              </List.Item>
+            )}
+          />
+        </Content>
+      </Layout>
     </Layout>
   </Layout>
-</Layout>
 );
 
-const layoutStyle = {
+const layoutContainerStyle = {
   flex: 1, 
   height: '100vh'
+};
+
+const layoutStyle = {
+  padding: '0 24px 24px',
+  height: '100%',
+};
+
+const breadcrumbStyle = {
+  margin: '16px 0',
+};
+
+const contentStyle = {
+  background: '#fff',
+  padding: 24,
+  margin: 0,
+  minHeight: 280, 
+};
+
+const headerStyle = {
+  margin: '16px 0',
+};
+
+const linkStyle = {
+  paddingTop: '2.5%',
 };
 
 export default BlogPage;
