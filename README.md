@@ -26,7 +26,7 @@ currently tested with Chrome MacOS `v70.0.3538.77`
 - install node, npm. follow this guide (https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04)
 - then do **```sudo apt install -y make gcc g++```**
 - next **```npm i -g pm2 serve```**
-- then clone the project **```git clone https://github.com/goerli/GoethBridgeUI.git```**
+- then clone the project **```git clone https://github.com/goerli/GoethWebsite.git```**
 - cd into the project and then do **```npm i```**
 - next do **```pm2 start npm -- start```**
 - do **```pm2 list```** to check if the app is running, pm2 allows you to run node app in background process
